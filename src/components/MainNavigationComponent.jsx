@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const MainNavigationComponent = () => {
   const navigation = [
     { name: 'Home', to: '/' },
-    { name: 'Features', to: '/' },
+    { name: 'Favorities', to: '/drinks/favorities' },
     { name: 'Marketplace', to: '/' },
     { name: 'Company', to: '/' },
   ];

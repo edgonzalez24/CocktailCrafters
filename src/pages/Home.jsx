@@ -5,8 +5,10 @@ const Home = () => {
   return (
     <>
       <HeroComponent />
+      <div className="py-16 sm:py-24">
+        <PopularDrinksComponents />
+      </div>
       <FeatureComponent />
-      <PopularDrinksComponents />
     </>
   );
 }
