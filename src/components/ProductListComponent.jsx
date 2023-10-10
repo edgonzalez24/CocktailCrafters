@@ -4,7 +4,7 @@ import CardSkeletonComponent from "./UI/CardSkeletonComponent";
 
 
 // eslint-disable-next-line react/prop-types
-export default function ProductListComponent({products, title, isLoading}) {
+export default function ProductListComponent({products, title, isLoading, isEmpty}) {
   const [listProducts, setListProducts] = useState([]);
   useEffect(() => {
     setListProducts(products)
@@ -25,7 +25,7 @@ export default function ProductListComponent({products, title, isLoading}) {
             listProducts.map((product) => (
               <CardProductComponent key={product.idDrink} product={product} />
             ))}
-          {listProducts.length === 0 && <p>No favorite drinks found</p>}
+          {!isEmpty && listProducts.length === 0 && <p>No favorite drinks found</p>}
         </div>
       </div>
     </div>
