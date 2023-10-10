@@ -1,14 +1,12 @@
 import React from 'react';
 import { Dialog } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const MainNavigationComponent = () => {
   const navigation = [
     { name: 'Home', to: '/' },
-    { name: 'Favorities', to: '/drinks/favorities' },
-    { name: 'Marketplace', to: '/' },
-    { name: 'Company', to: '/' },
+    { name: 'Favorities', to: '/drinks/favorities' }
   ];
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
   return (
@@ -18,14 +16,19 @@ const MainNavigationComponent = () => {
         aria-label="Global"
       >
         <div className="flex lg:flex-1">
-          <Link to="/" className="-m-1.5 p-1.5">
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              `-m-1.5 p-1.5 ${isActive ? 'font-bold underline' : ''}`
+            }
+          >
             <span className="sr-only">Your Company</span>
             <img
               className="h-8 w-auto"
               src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
               alt=""
             />
-          </Link>
+          </NavLink>
         </div>
         <div className="flex lg:hidden">
           <button
@@ -39,13 +42,17 @@ const MainNavigationComponent = () => {
         </div>
         <div className="hidden lg:flex lg:gap-x-12">
           {navigation.map((item) => (
-            <Link
+            <NavLink
               key={item.name}
               to={item.to}
-              className="text-sm font-semibold leading-6 text-gray-900"
+              className={({ isActive }) =>
+                `text-sm font-semibold leading-6 text-gray-900 ${
+                  isActive ? 'underline' : null
+                }`
+              }
             >
               {item.name}
-            </Link>
+            </NavLink>
           ))}
         </div>
       </nav>
@@ -79,13 +86,14 @@ const MainNavigationComponent = () => {
             <div className="-my-6 divide-y divide-gray-500/10">
               <div className="space-y-2 py-6">
                 {navigation.map((item) => (
-                  <Link
+                  <NavLink
                     key={item.name}
                     to={item.to}
-                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                    className={({isActive}) => `-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 ${isActive ? 'underline' : null }`}
+                    onClick={() => setMobileMenuOpen(false)}
                   >
                     {item.name}
-                  </Link>
+                  </NavLink>
                 ))}
               </div>
             </div>

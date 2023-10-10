@@ -4,7 +4,11 @@ import { Link } from "react-router-dom";
 // eslint-disable-next-line react/prop-types
 const CardProductComponent = ({product}) => {
   return (
-    <Link to={`/drink/${product.idDrink}`} className="group relative">
+    <Link
+      to={`/drink/${product.idDrink}`}
+      className="group relative"
+      preventScrollReset={true}
+    >
       <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
         <img
           src={product.strDrinkThumb}

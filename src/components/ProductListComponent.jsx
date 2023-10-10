@@ -19,12 +19,13 @@ export default function ProductListComponent({products, title, isLoading}) {
         <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
           {isLoading &&
             Array.from({ length: 8 }).map((_, index) => (
-              <CardSkeletonComponent key={index}/>
+              <CardSkeletonComponent key={index} />
             ))}
           {!isLoading &&
             listProducts.map((product) => (
               <CardProductComponent key={product.idDrink} product={product} />
             ))}
+          {listProducts.length === 0 && <p>No favorite drinks found</p>}
         </div>
       </div>
     </div>
