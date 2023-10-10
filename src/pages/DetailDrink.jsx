@@ -12,18 +12,22 @@ const DetailDrink = () => {
   const dispatch = useDispatch();
   const favoriteDrinks = useSelector((state) => state.favorite.drinks);
 
-    React.useEffect(() => {
-      const getDrink = async () => {
-        try {
-          const { data: { drinks }} = await axios.get(`${import.meta.env.VITE_BASE_URL}/lookup.php?i=${id}`);
-          const currentDrink = drinks[0];
-          setDrink(currentDrink);
-        } catch (error) {
-          console.error(error);
-        }
-      };
+  const getDrink = async (id) => {
+    try {
+      const {
+        data: { drinks },
+      } = await axios.get(
+        `${import.meta.env.VITE_BASE_URL}/lookup.php?i=${id}`
+      );
+      const currentDrink = drinks[0];
+      setDrink(currentDrink);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-      return () => getDrink();
+    React.useEffect(() => {
+      getDrink(id);
     }, [id]);
 
     const isFavorite = isDrinkFavorite(favoriteDrinks, drink.idDrink);
